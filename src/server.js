@@ -1,6 +1,7 @@
 const express = require("express");
 const Firebird = require("node-firebird");
 const app = express();
+const cors = require("cors");
 
 const PORT = process.env.PORT || 5000;
 
@@ -13,6 +14,10 @@ const options = {
   password: "masterkey",
   lowercase_keys: false,
 };
+
+app.use(express.json()); // sin esto no podemos ver el req.body
+app.use(express.urlencoded({ extended: true })); // sino se agrega no podremos tomar los parametros de la url del request, req.query
+app.use(cors());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:6000");
