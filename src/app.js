@@ -1,18 +1,17 @@
 const express = require("express");
 const Firebird = require("node-firebird");
 const app = express();
-require('dotenv').config();
 
 
 const PORT = process.env.PORT || 5000;
 
 
 const options = {
-  host: process.env.HOST,
-  port: process.env.PORT,
-  database: process.env.DATABASE,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
+  host: "127.0.0.1",
+  port: 3050,
+  database:"C:\\Fiscaltech\\Ambientes_Valery\\ValerySMB_7177a\\Datos\\VALERY3.MDF",
+  user: "SYSDBA",
+  password: "masterkey",
   lowercase_keys: false,
 };
 
@@ -21,7 +20,7 @@ app.use(express.urlencoded({ extended: true })); // sino se agrega no podremos t
 
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5000");
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
