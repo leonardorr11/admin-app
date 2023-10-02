@@ -2,6 +2,8 @@ const express = require("express");
 const Firebird = require("node-firebird");
 const app = express();
 
+const PORT = process.env.PORT || 5000;
+
 
 const options = {
   host: "127.0.0.1",
@@ -67,7 +69,7 @@ FROM ventas v join ventas_rm rm on ((v.correlativo = rm.correlativo_principal) a
   });
 });
 
-const port = 5000;
-app.listen(port, () => {
-  console.log(`Servidor backend en ejecución en http://localhost:${port}`);
+
+app.listen(PORT, () => {
+  console.log(`Servidor backend en ejecución en http://localhost:${PORT}`);
 });
