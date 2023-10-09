@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require("express");
 const Firebird = require("node-firebird");
 const app = express();
 require('dotenv').config();
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 const options = {
   host: process.env.DB_HOST,
