@@ -1,19 +1,20 @@
 const express = require("express");
 const Firebird = require("node-firebird");
 const app = express();
+require('dotenv').config();
 
 
 const PORT = process.env.PORT || 5000;
 
-
 const options = {
-  host: "127.0.0.1",
-  port: 3050,
-  database:"C:\\Fiscaltech\\Ambientes_Valery\\ValerySMB_7177a\\Datos\\VALERY3.MDF",
-  user: "SYSDBA",
-  password: "masterkey",
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   lowercase_keys: false,
 };
+
 
 app.use(express.json()); // sin esto no podemos ver el req.body
 app.use(express.urlencoded({ extended: true })); // sino se agrega no podremos tomar los parametros de la url del request, req.query
