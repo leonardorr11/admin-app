@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require("express");
 const Firebird = require("node-firebird");
 const app = express();
-require('dotenv').config();
+
 
 
 const PORT = process.env.PORT;
@@ -35,16 +35,6 @@ app.get("/ventas", (req, res) => {
       res.status(500).json({ error: "Error al conectar a la base de datos" });
       return;
     }
-
-    if (!db) {
-      res
-        .status(500)
-        .json({
-          error: "Error al establecer la conexión con la base de datos",
-        });
-      return;
-    }
-
     const sql = `select
     v.fecha_emision,
     count(v.documento),
@@ -69,10 +59,21 @@ FROM ventas v join ventas_rm rm on ((v.correlativo = rm.correlativo_principal) a
         return;
       }
 
-     
+
 
       res.json(result);
     });
+
+    if (!db) {
+      res
+        .status(500)
+        .json({
+          error: "Error al establecer la conexión con la base de datos",
+        });
+      return;
+    }
+
+
   });
 });
 
