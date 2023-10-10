@@ -79,5 +79,5 @@ FROM ventas v join ventas_rm rm on ((v.correlativo = rm.correlativo_principal) a
 
 
 app.listen(PORT, () => {
-  console.log(`Servidor backend en ejecución en https://admin-app-deploy-prueba.onrender.com:${PORT}`);
+  console.log(`Servidor backend en ejecución en http://localhost:${PORT}`);
 });
