@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true })); // sino se agrega no podremos t
 
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
@@ -58,8 +58,6 @@ FROM ventas v join ventas_rm rm on ((v.correlativo = rm.correlativo_principal) a
         res.status(500).json({ error: "Error al ejecutar la consulta" });
         return;
       }
-
-
 
       res.json(result);
     });
