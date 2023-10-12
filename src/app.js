@@ -1,16 +1,16 @@
 require('dotenv').config();
 const express = require("express");
-const Firebird = require("node-firebird");
 const app = express();
+const Firebird = require("node-firebird");
 
 
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3001;
 
 const options = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
-  database: process.env.DB_NAME,
+  database: process.env.DB_DATABASE,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   lowercase_keys: false,
@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/ventas", (req, res) => {
+app.get("/ventas", (req, res) =>  {
   Firebird.attach(options, (err, db) => {
     if (err) {
       console.error(err);
