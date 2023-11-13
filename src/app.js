@@ -5,14 +5,14 @@ const Firebird = require("node-firebird");
 
 
 
-const PORT = process.env.PORT || 3050;
+const PORT = process.env.PORT || 5000;
 
 const options = {
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  database: process.env.DB_DATABASE,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
+  host: '127.0.0.1',
+  port: '3050',
+  database: 'C:\\Fiscaltech\\Ambientes_Valery\\ValerySMB_7177a\\Datos\\VALERY3.MDF',
+  user: 'SYSDBA',
+  password: 'masterkey',
   lowercase_keys: false,
 };
 
@@ -60,6 +60,8 @@ FROM ventas v join ventas_rm rm on ((v.correlativo = rm.correlativo_principal) a
       }
 
       res.json(result);
+
+    
     });
 
     if (!db) {
